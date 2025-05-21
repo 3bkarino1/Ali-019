@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a1120; /* Darker blue background to match image */
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: #c3fd5d; /* This would make "Ali" appear in the same green color as your highlights */
+            font-weight: 700; /* Makes it bold */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #c3fd5d;
+        }
+
+        .contact-btn {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #c3fd5d;
+            color: #0a1120;
+        }
+
+        .contact-btn .icon {
+            width: 20px;
+            height: 20px;
+            background-color: #c3fd5d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            position: relative;
+            min-height: 700px;
+            background: linear-gradient(to bottom, #0a1120, #0f1a2e);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #c3fd5d;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 52px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .hero-img {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: auto;
+            height: 500px;
+            z-index: 1;
+            margin-bottom: -20px;
+        }
+
+        /* Typing Animation */
+        .typing-animation {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .typing-animation::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 70%;
+            width: 3px;
+            background-color: #c3fd5d;
+            animation: blink 0.7s infinite;
+        }
+        
+        /* Contact Section Styling */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-content p {
+            margin-bottom: 30px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover .contact-icon {
+            background-color: #c3fd5d;
+            color: #0a1120;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-input, .contact-textarea {
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-input:focus, .contact-textarea:focus {
+            outline: none;
+            border-color: #c3fd5d;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .send-message-btn {
+            background-color: #c3fd5d;
+            color: #0a1120;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .send-message-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: -1;
+            transition: all 0.5s ease;
+            border-radius: 30px;
+        }
+        
+        .send-message-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(195, 253, 93, 0.5);
+        }
+        
+        .send-message-btn:hover:before {
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-methods {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Client Review Card */
+        /* Client Review Card */
+        .client-review {
+            position: absolute;
+            left: 15%;
+            bottom: 40%;
+            background-color: rgba(10, 17, 32, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 3;
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+        }
+
+        .client-review:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 0 15px 35px rgba(195, 253, 93, 0.2);
+            border: 1px solid rgba(195, 253, 93, 0.3);
+        }
+
+        /* Expertise Card */
+        .expertise-card {
+            position: absolute;
+            right: 15%;
+            bottom: 40%;
+            background-color: rgba(10, 17, 32, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 3;
+            transform: rotate(5deg);
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 0 15px 35px rgba(195, 253, 93, 0.2);
+            border: 1px solid rgba(195, 253, 93, 0.3);
+        }
+
+        /* Add hover effect for progress bars */
+        .expertise-card:hover .progress-fill {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.8;
+            }
+        }
+
+        .client-review h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .skill-progress {
+            margin-bottom: 15px;
+        }
+
+        .skill-progress p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #c3fd5d;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #c3fd5d;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .about-img {
+            position: absolute;
+            width: 120px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-img-1 {
+            left: 100px;
+            top: 200px;
+        }
+
+        .about-img-2 {
+            right: 100px;
+            bottom: 150px;
+        }
+
+        /* My Projects Button Styling */
+        .my-projects-btn {
+            background-color: #c3fd5d;
+            color: #0a1120;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(195, 253, 93, 0.3);
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        
+        .my-projects-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: -1;
+            transition: all 0.5s ease;
+            border-radius: 30px;
+        }
+        
+        .my-projects-btn:hover {
+            color: #0a1120;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(195, 253, 93, 0.5);
+        }
+        
+        .my-projects-btn:hover:before {
+            width: 100%;
+        }
+        
+        .my-projects-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(195, 253, 93, 0.4);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 50px 0 100px;
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill-box {
+            flex: 0 0 calc(20% - 20px);
+            aspect-ratio: 1/1;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            filter: brightness(0) invert(1); /* Make icons white */
+        }
+
+        .html-icon {
+            filter: brightness(0) invert(1) sepia(100%) saturate(1000%) hue-rotate(0deg);
+            color: #e34c26;
+        }
+        
+        .css-icon {
+            filter: brightness(0) invert(1) sepia(100%) saturate(1000%) hue-rotate(200deg);
+            color: #264de4;
+        }
+        
+        .js-icon {
+            filter: brightness(0) invert(1) sepia(100%) saturate(1000%) hue-rotate(50deg);
+            color: #f7df1e;
+        }
+        
+        .react-icon {
+            filter: brightness(0) invert(1) sepia(100%) saturate(1000%) hue-rotate(180deg);
+            color: #61dafb;
+        }
+
+        .experience-box {
+            flex: 0 0 calc(20% - 20px);
+            aspect-ratio: 1/1;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .experience-box h2 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .experience-box p {
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        /* Additional Skills Section */
+        .additional-skills {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .additional-skill-box {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .additional-skill-box:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Project Cards */
+        .project-card {
+            width: 300px;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(195, 253, 93, 0.2);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 17, 32, 0.9), transparent);
+            padding: 20px;
+            transform: translateY(100px);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .project-overlay h3 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .project-overlay p {
+            color: #c3fd5d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .view-project-btn {
+            display: inline-block;
+            background-color: #c3fd5d;
+            color: #0a1120;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .view-project-btn:hover {
+            background-color: #ffffff;
+            transform: scale(1.05);
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        .mobile-menu-btn span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: #0a1120;
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            background-color: rgba(10, 17, 32, 0.95);
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .mobile-nav ul li {
+            margin: 15px 0;
+        }
+        
+        .mobile-nav ul li a {
+            font-size: 24px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 98;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 768px) {
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+        .skill-box, .experience-box {
+            flex: 0 0 calc(33.333% - 20px);
+        }
+
+        .hero-content {
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 48px;
+        }
+
+        .hero-subtitle {
+            font-size: 36px;
+        }
+
+        .hero-img {
+            height: 400px;
+        }
+
+        .client-review, .expertise-card {
+            position: absolute;
+            transform: scale(0.8);
+        }
+        
+        .client-review {
+            left: 0;
+            bottom: 30%;
+            margin: 0;
+        }
+        
+        .expertise-card {
+            right: 0;
+            bottom: 30%;
+            margin: 0;
+        }
+
+        .my-projects-btn {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            margin-top: 30px;
+        }
+        }
+
+        @media (max-width: 768px) {
+            .skill-box, .experience-box {
+                flex: 0 0 calc(50% - 20px);
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .about-img {
+                display: none;
+            }
+        }
+        @media (max-width: 992px) {
+            .skill-box, .experience-box {
+                flex: 0 0 calc(33.333% - 20px);
+            }
+            
+            .hero-content {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-subtitle {
+                font-size: 36px;
+            }
+            
+            .hero-img {
+                height: 400px;
+            }
+            
+            .client-review, .expertise-card {
+                position: absolute;
+                transform: scale(0.8);
+            }
+            
+            .client-review {
+                left: 0;
+                bottom: 30%;
+                margin: 0;
+            }
+            
+            .expertise-card {
+                right: 0;
+                bottom: 30%;
+                margin: 0;
+            }
+            
+            .my-projects-btn {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                margin-top: 30px;
+            }
+            
+            .contact-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            
+            .contact-btn .icon {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .skill-box, .experience-box {
+                flex: 0 0 calc(50% - 20px);
+            }
+            
+            .about-img {
+                display: none;
+            }
+            
+            .contact-btn {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 28px;
+            }
+            
+            .hero-img {
+                height: 350px;
+            }
+            
+            .about-content p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 22px;
+            }
+            
+            .hero-img {
+                height: 300px;
+            }
+            
+            .skill-box, .experience-box {
+                flex: 0 0 calc(100% - 20px);
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .about-content p {
+                font-size: 14px;
+            }
+            
+            .client-review, .expertise-card {
+                position: absolute;
+                transform: scale(0.7);
+            }
+            
+            .client-review {
+                left: 50%;
+                transform: translateX(-50%) scale(0.7);
+                top: 20%; /* Position above the hero image */
+                margin: 0;
+            }
+            
+            .expertise-card {
+                left: 50%;
+                transform: translateX(-50%) scale(0.7);
+                bottom: 10%; /* Position below the hero image */
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-text"><span>Ali</span> Hatem</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">ABOUT ME</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <button class="contact-btn" onclick="scrollToContact()">
+                CONTACT
+                <div class="icon">→</div>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="#about">ABOUT ME</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">I'm <span class="highlight typing-animation">Ali Hatem</span></h1>
+                <h2 class="hero-subtitle">Web Developer</h2>
+            </div>
+            <img src="ALI.png" alt="Ali Hatem" class="hero-img">
+            
+            <!-- Client Review Card -->
+            <div class="client-review">
+                <h3>About My<span>⭐️</span></h3>
+                <p>Professional and creative! Delivers high-quality work with great attention to detail.</p>
+            </div>
+            
+            <!-- Expertise Card -->
+            <div class="expertise-card">
+                <h3>MY EXPERTISE</h3>
+                <div class="skill-progress">
+                    <p>
+                        <span>WEB DESIGN</span>
+                        <span>90%</span>
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-progress">
+                    <p>
+                        <span>WEB DEVELOPMENT</span>
+                        <span>95%</span>
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill-progress">
+                    <p>
+                        <span>PHOTOGRAPHY</span>
+                        <span>85%</span>
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">WHO AM I ?</h2>
+            <div class="about-content">
+                <p>I'm Ali Hatem, a creative web developer with years of experience. I specialize in HTML, CSS, and JavaScript, along with tools like Notion and Canva.</p>
+                <p>I've won multiple national and international competitions in robotics and innovation, and I'm passionate about technology and web development.</p>
+                <p>In my free time, I enjoy working on side projects, exploring AI, and playing video games!</p>
+                <button class="my-projects-btn" onclick="window.open('https://ali-websites.pages.dev/', '_blank')">SHOW MY PROJECTS</button>
+            </div>
+            <img src="ALI.jpeg" alt="Portfolio Image" class="about-img about-img-1">
+            <img src="Ali.jpg" alt="Portfolio Image" class="about-img about-img-2">
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">MY SKILLS</h2>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/8.13.0/html5.svg" alt="HTML5" class="skill-icon html-icon">
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/8.13.0/css3.svg" alt="CSS3" class="skill-icon css-icon">
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/8.13.0/javascript.svg" alt="JavaScript" class="skill-icon js-icon">
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/8.13.0/notion.svg" alt="Notion" class="skill-icon">
+                </div>
+                <div class="experience-box">
+                    <h2>5</h2>
+                    <p>Years<br>Experience<br>Creating</p>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin-top: 40px; margin-bottom: 20px; color: #c3fd5d;">ADDITIONAL SKILLS</h3>
+            <div class="additional-skills">
+                <div class="additional-skill-box">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/8.13.0/canva.svg" alt="Canva" class="skill-icon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="padding: 100px 0;">
+        <div class="container">
+            <h2 class="section-title">MY PROJECTS</h2>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div class="project-card">
+                    <img src="portfolio (3).png" alt="Galaxy Wonders" class="project-img">
+                    <div class="project-overlay">
+                        <h3>Galaxy Wonders</h3>
+                        <p>Web Development</p>
+                        <a href="https://galaxy-wonder.pages.dev/" class="view-project-btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="portfolio (4).png" alt="Dino World Game" class="project-img">
+                    <div class="project-overlay">
+                        <h3>Dino World Game</h3>
+                        <p>Web Design</p>
+                        <a href="#" class="view-project-btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="portfolio (2).png" alt="Diabetes Info Site" class="project-img">
+                    <div class="project-overlay">
+                        <h3>Health Guide</h3>
+                        <p>Web Development</p>
+                        <a href="https://health-guide.pages.dev/" class="view-project-btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact" style="padding: 100px 0;">
+        <div class="container">
+            <h2 class="section-title">LET'S HAVE A CHAT</h2>
+            <div class="contact-content">                
+                <div class="contact-methods">
+                    <a href="mailto:3li.hatem.1999@gmial.com" class="contact-method">
+                        <div class="contact-icon">✉️</div>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ali-hatem-586403323/" target="_blank" class="contact-method">
+                        <div class="contact-icon">💼</div>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/3bkarino1/" target="_blank" class="contact-method">
+                        <div class="contact-icon">💻</div>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <div class="contact-form">
+                    <input type="text" placeholder="Your Name" class="contact-input">
+                    <input type="email" placeholder="Your Email" class="contact-input">
+                    <textarea placeholder="Your Message" class="contact-textarea"></textarea>
+                    <button class="send-message-btn">SEND MESSAGE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                button.addEventListener('mouseout', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to scroll to contact section
+            window.scrollToContact = function() {
+                const contactSection = document.querySelector('#contact');
+                if (contactSection) {
+                    window.scrollTo({
+                        top: contactSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+        
+        function scrollToContact() {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav ul li a');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        overlay.addEventListener('click', function() {
+            mobileMenuBtn.classList.remove('active');
+            mobileNav.classList.remove('active');
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+</html>
